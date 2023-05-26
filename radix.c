@@ -1,8 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   radix.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zyasa <zyasa@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/26 14:22:05 by zyasa             #+#    #+#             */
+/*   Updated: 2023/05/26 14:22:47 by zyasa            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include <stdio.h>
-//ilk gelen indeksleri bitlere çevirmem gerekiyor
-//sonra sondaki bit 0 sa bye göndericem
-//sonra hepsini a ya göndericem, 2.bitlere bakıcam
 
 static int find_max_bit(t_stack a)
 {
@@ -31,15 +39,14 @@ void radix(t_stack *a, t_stack *b)
         i = 0;
         while (i < a->capacity)
         {
-            if((a->numbers[0].index >> j & 1))
+            if(a->numbers[0].index >> j & 1)
                 rotate(a, "ra\n");
             else
                 push(a, b, "pb\n");
             i++;
         }
         while (b->size > 0)
-            push(b, a, "pa\n");
+			push(b, a, "pa\n");
         j++;
     }
 }
-    
